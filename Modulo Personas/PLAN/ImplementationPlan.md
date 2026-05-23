@@ -8,24 +8,7 @@ Siguiendo los lineamientos de Arquitectura Limpia, el módulo se divide en:
 * **Application:** Casos de uso de gestión y consulta.
 * **Infrastructure:** Adaptadores REST para integración con M1, M2 y M3.
 
-## Project Structure
-
-src/main/java/com/distribuidora/peopleapi/
-├── domain/
-│   ├── model/
-│   │   ├── Operario.java
-│   │   ├── Transportista.java
-│   │   └── Cliente.java
-├── application/
-│   ├── service/
-│   │   ├── GestionOperarioUseCase.java
-│   │   ├── GestionTransportistaUseCase.java
-│   │   └── GestionClienteUseCase.java
-└── infrastructure/
-├── adapter/inbound/rest/
-│   ├── OperarioController.java      # Endpoint para M1
-│   ├── TransportistaController.java # Endpoint para M2
-│   └── ClienteController.java       # Endpoint para M3
+### Project Structure
 src/main/java/com/distribuidora/peopleapi/
 ├── domain/
 │   ├── model/
@@ -43,6 +26,7 @@ src/main/java/com/distribuidora/peopleapi/
 │   ├── TransportistaController.java # Endpoint para M2
 │   └── ClienteController.java       # Endpoint para M3
 
+ 
 ## Implementation Phases
 
 ### Phase 1: Gestión de Entidades (Domain Layer)
