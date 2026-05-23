@@ -12,20 +12,29 @@ Siguiendo los lineamientos de Arquitectura Limpia, el módulo se divide en:
 ``` text
 src/main/java/com/distribuidora/peopleapi/
 ├── domain/
-│   ├── model/
-│   │   ├── Operario.java
-│   │   ├── Transportista.java
-│   │   └── Cliente.java
+│   ├── model/                  # Entidades de dominio (POJOs puros)
+│   ├── repository/             # Interfaces de salida (Puertos de salida)
+│   └── exception/              # Excepciones específicas del dominio
 ├── application/
-│   ├── service/
-│   │   ├── GestionOperarioUseCase.java
+│   ├── service/                # Implementación de casos de uso
+|   |   ├── GestionOperarioUseCase.java
 │   │   ├── GestionTransportistaUseCase.java
-│   │   └── GestionClienteUseCase.java
+│   │   └── GestionClienteUseCase.java                       
+│   └── port/                   # Interfaces de entrada (Puertos de entrada)
 └── infrastructure/
-    └── adapter/inbound/rest/
-        ├── OperarioController.java       # Endpoint para M1
-        ├── TransportistaController.java  # Endpoint para M2
-        └── ClienteController.java        # Endpoint para M3
+    ├── adapter/
+    │   ├── inbound/            # Entrada: Controladores y DTOs
+    │   │   ├── rest/
+    |   |   |   ├──OperarioController.java       # Endpoint para M1
+    |   |   |   ├── TransportistaController.java  # Endpoint para M2
+    |   |   |   └── ClienteController.java        # Endpoint para M3
+    │   │   │   ├── dto/        # Objetos de transferencia de datos (Request/Response)
+    │   │   │   ├── mapper/     # Conversión DTO <-> Domain
+    │   │   │   └── exception/  # Manejadores globales de errores (@ControllerAdvice)
+    │   └── outbound/           # Salida: Adaptadores para BD (JPA, etc.)
+    │       └── persistence/
+    │           ├── entity/     # Entidades de base de datos (@Entity)
+    │           └── mapper/     # Conversión Entity <-> Domain
 ```
  
 ## Implementation Phases
