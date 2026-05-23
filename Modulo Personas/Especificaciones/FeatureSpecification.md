@@ -8,17 +8,17 @@
 ## Servicios de Integración
 
 ### 1. Gestión de Operarios (Integración con Módulo de Inventario)
-**Funcionalidad:** Registro, actualización e inactivación de operarios.
+**Funcionalidad:** CRUD de operarios.
 * **Propósito:** El Módulo de Inventario (M1) consume este servicio para validar qué operario procesa pedidos (despacho/recepción).
 * **Datos Clave:** ID, Nombre completo, Área de trabajo, Estado (Activo/Inactivo).
 
 ### 2. Gestión de Transportistas (Integración con Módulo de Logística)
-**Funcionalidad:** Control de personal de distribución y flota.
+**Funcionalidad:** CRUD de transportista.
 * **Propósito:** El Módulo de Logística (M2) consulta este componente para vincular un transportista disponible a una ruta calculada.
 * **Datos Clave:** ID Transportista, Nombre, Teléfono, Capacidad.
 
 ### 3. Gestión de Clientes (Integración con Módulo Financiero)
-**Funcionalidad:** Administración de base de datos de clientes.
+**Funcionalidad:** CRUD de clientes.
 * **Propósito:** El Módulo Financiero (M3) consume este servicio para obtener datos maestros y generar facturas.
 * **Datos Clave:** Cédula/NIT, Nombre, Dirección, Teléfono, Ciudad/Región.
 
