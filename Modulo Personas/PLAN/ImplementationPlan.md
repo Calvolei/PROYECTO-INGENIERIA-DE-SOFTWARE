@@ -9,6 +9,7 @@ Siguiendo los lineamientos de Arquitectura Limpia, el módulo se divide en:
 * **Infrastructure:** Adaptadores REST para integración con M1, M2 y M3.
 
 ### Project Structure
+``` text
 src/main/java/com/distribuidora/peopleapi/
 ├── domain/
 │   ├── model/
@@ -21,11 +22,11 @@ src/main/java/com/distribuidora/peopleapi/
 │   │   ├── GestionTransportistaUseCase.java
 │   │   └── GestionClienteUseCase.java
 └── infrastructure/
-├── adapter/inbound/rest/
-│   ├── OperarioController.java      # Endpoint para M1
-│   ├── TransportistaController.java # Endpoint para M2
-│   └── ClienteController.java       # Endpoint para M3
-
+    └── adapter/inbound/rest/
+        ├── OperarioController.java       # Endpoint para M1
+        ├── TransportistaController.java  # Endpoint para M2
+        └── ClienteController.java        # Endpoint para M3
+```
  
 ## Implementation Phases
 
