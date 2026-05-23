@@ -26,6 +26,22 @@ src/main/java/com/distribuidora/peopleapi/
 │   ├── OperarioController.java      # Endpoint para M1
 │   ├── TransportistaController.java # Endpoint para M2
 │   └── ClienteController.java       # Endpoint para M3
+src/main/java/com/distribuidora/peopleapi/
+├── domain/
+│   ├── model/
+│   │   ├── Operario.java
+│   │   ├── Transportista.java
+│   │   └── Cliente.java
+├── application/
+│   ├── service/
+│   │   ├── GestionOperarioUseCase.java
+│   │   ├── GestionTransportistaUseCase.java
+│   │   └── GestionClienteUseCase.java
+└── infrastructure/
+├── adapter/inbound/rest/
+│   ├── OperarioController.java      # Endpoint para M1
+│   ├── TransportistaController.java # Endpoint para M2
+│   └── ClienteController.java       # Endpoint para M3
 
 ## Implementation Phases
 
