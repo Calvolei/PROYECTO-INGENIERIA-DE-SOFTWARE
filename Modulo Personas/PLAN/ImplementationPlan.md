@@ -4,11 +4,12 @@
 
 ## Arquitectura
 Siguiendo los lineamientos de Arquitectura Limpia, el módulo se divide en:
-* **Domain:** Entidades `Operario`, `Transportista`, `Cliente`[cite: 4].
-* **Application:** Casos de uso de gestión y consulta[cite: 4].
-* **Infrastructure:** Adaptadores REST para integración con M1, M2 y M3[cite: 4].
+* **Domain:** Entidades `Operario`, `Transportista`, `Cliente`.
+* **Application:** Casos de uso de gestión y consulta.
+* **Infrastructure:** Adaptadores REST para integración con M1, M2 y M3.
 
 ## Project Structure
+
 src/main/java/com/distribuidora/peopleapi/
 ├── domain/
 │   ├── model/
@@ -25,6 +26,7 @@ src/main/java/com/distribuidora/peopleapi/
 │   ├── OperarioController.java      # Endpoint para M1
 │   ├── TransportistaController.java # Endpoint para M2
 │   └── ClienteController.java       # Endpoint para M3
+
 ## Implementation Phases
 
 ### Phase 1: Gestión de Entidades (Domain Layer)
@@ -42,5 +44,5 @@ src/main/java/com/distribuidora/peopleapi/
     [ ] T008 Crear controladores REST para M3 (perfiles financieros/cobros).
 
 ## Success Criteria Técnicos
-* **SC-001:** El sistema debe confirmar el éxito de la acción tras validar obligatoriedad de campos[cite: 4].
-* **SC-002:** API de consulta para M1, M2 y M3 debe responder con la estructura de datos definida en el documento[cite: 4].
+* **SC-001:** El sistema debe confirmar el éxito de la acción tras validar obligatoriedad de campos.
+* **SC-002:** API de consulta para M1, M2 y M3 debe responder con la estructura de datos definida en el documento.
