@@ -1,3 +1,5 @@
+
+
 # Implementation Plan: Módulo Personas - Core de Identidades
 
 **Spec:** especificaciones/modulo_personas.md
