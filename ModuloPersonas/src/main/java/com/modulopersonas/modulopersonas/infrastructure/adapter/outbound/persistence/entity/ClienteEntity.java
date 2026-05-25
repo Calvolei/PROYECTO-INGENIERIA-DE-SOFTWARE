@@ -1,6 +1,6 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity;
 
-import main.java.com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
+import com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "clientes")
 
-public class Cliente {
+public class ClienteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +44,7 @@ public class Cliente {
     @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
 
-    @Column(name = "fecha_actualizacion")
-    private LocalDateTime fechaActualizacion;
 
-    @Column(name = "puntos_fidelidad")
-    private Integer puntosFidelidad = 0;
 
     // ========== MÉTODOS DE CICLO DE VIDA (Lombok NO los genera) ==========
 
@@ -60,16 +56,7 @@ public class Cliente {
         if (activo == null) {
             activo = true;
         }
-        if (puntosFidelidad == null) {
-            puntosFidelidad = 0;
-        }
     }
-
-    @PreUpdate
-    protected void onUpdate() {
-        fechaActualizacion = LocalDateTime.now();
-    }
-
 
     public String getNombreCompleto() {
         return nombre + " " + apellido;

@@ -1,8 +1,8 @@
-package main.java.com.modulopersonas.modulopersonas.domain.enums;
+package com.modulopersonas.modulopersonas.domain.enums;
 
 public enum MetodoPago {
     CARTERA_COMERCIAL("CARTERA COMERCIAL"),
-    EFECTIVO("Efectivo");
+    EFECTIVO("EFECTIVO");
 
     private final String descripcion;
 
