@@ -4,9 +4,12 @@ import com.modulopersonas.modulopersonas.domain.model.Cliente;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity.ClienteEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 @Mapper(componentModel = "spring")
+@Component
 public interface ClienteEntityMapper {
 
     // Entity → Domain
@@ -18,7 +21,6 @@ public interface ClienteEntityMapper {
     // Domain → Entity
     @Mapping(target = "fechaRegistro", source = "fechaCreacion")
     @Mapping(target = "nombreCompleto", ignore = true)
-    @Mapping(target = "onCreate", ignore = true)
     ClienteEntity toEntity(Cliente domain);
 
     // Lista Entity → Lista Domain

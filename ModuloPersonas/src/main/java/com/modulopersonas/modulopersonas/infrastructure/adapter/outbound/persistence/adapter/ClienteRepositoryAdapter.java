@@ -1,9 +1,11 @@
-package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence;
+package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.adapter;
 
-import com.modulopersonas.modulopersonas.domain.model.Transportista;
-import com.modulopersonas.modulopersonas.domain.repository.TransportistaRepositoryPort;
-import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity.TransportistaEntity;
-import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.mapper.TransportistaEntityMapper;
+
+import com.modulopersonas.modulopersonas.domain.model.Cliente;
+import com.modulopersonas.modulopersonas.domain.repository.ClienteRepositoryPort;
+import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.repository.JpaClienteRepository;
+import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity.ClienteEntity;
+import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.mapper.ClienteEntityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.List;
@@ -11,26 +13,26 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class TransportistaRepositoryAdapter implements TransportistaRepositoryPort {
+public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
-    private final JpaTransportistaRepository jpaRepository;
-    private final TransportistaEntityMapper entityMapper;
+    private final JpaClienteRepository jpaRepository;
+    private final ClienteEntityMapper entityMapper;
 
     @Override
-    public Transportista save(Transportista domain) {
-        TransportistaEntity entity = entityMapper.toEntity(domain);
-        TransportistaEntity saved = jpaRepository.save(entity);
+    public Cliente save(Cliente domain) {
+        ClienteEntity entity = entityMapper.toEntity(domain);
+        ClienteEntity saved = jpaRepository.save(entity);
         return entityMapper.toDomain(saved);
     }
 
     @Override
-    public Optional<Transportista> findById(Long id) {
+    public Optional<Cliente> findById(Long id) {
         return jpaRepository.findById(id)
                 .map(entityMapper::toDomain);
     }
 
     @Override
-    public List<Transportista> findAll() {
+    public List<Cliente> findAll() {
         return entityMapper.toDomainList(jpaRepository.findAll());
     }
 
@@ -40,13 +42,13 @@ public class TransportistaRepositoryAdapter implements TransportistaRepositoryPo
     }
 
     @Override
-    public Optional<Transportista> findByIdentificacionNacional(String identificacionNacional) {
+    public Optional<Cliente> findByIdentificacionNacional(String identificacionNacional) {
         return jpaRepository.findByIdentificacionNacional(identificacionNacional)
                 .map(entityMapper::toDomain);
     }
 
     @Override
-    public Optional<Transportista> findByNumeroCelular(String numeroCelular) {
+    public Optional<Cliente> findByNumeroCelular(String numeroCelular) {
         return jpaRepository.findByNumeroCelular(numeroCelular)
                 .map(entityMapper::toDomain);
     }

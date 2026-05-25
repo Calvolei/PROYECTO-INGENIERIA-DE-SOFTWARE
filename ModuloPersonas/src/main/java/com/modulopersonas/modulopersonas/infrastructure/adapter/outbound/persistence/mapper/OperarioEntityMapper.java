@@ -5,9 +5,12 @@ import com.modulopersonas.modulopersonas.domain.model.Operario;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity.OperarioEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 @Mapper(componentModel = "spring")
+@Component
 public interface OperarioEntityMapper {
 
     // Entity → Domain
@@ -16,7 +19,6 @@ public interface OperarioEntityMapper {
 
     // Domain → Entity
     @Mapping(target = "nombreCompleto", ignore = true)
-    @Mapping(target = "onCreate", ignore = true)
     OperarioEntity toEntity(Operario domain);
 
     // Lista Entity → Lista Domain

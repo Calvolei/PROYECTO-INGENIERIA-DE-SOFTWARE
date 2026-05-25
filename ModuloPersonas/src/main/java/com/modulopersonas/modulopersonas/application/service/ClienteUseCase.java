@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,7 +44,7 @@ public class ClienteUseCase {
     public List<ClienteResponseDTO> findAll() {
         return repositoryPort.findAll().stream()
                 .map(domainMapper::toResponseDTO)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Transactional
@@ -93,7 +94,7 @@ public class ClienteUseCase {
         Cliente domain = repositoryPort.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
 
-        domain.setActivo(!domain.getActivo());
+        domain.setActivo(!Boolean.TRUE.equals(domain.getActivo()));
         Cliente updated = repositoryPort.save(domain);
         return domainMapper.toResponseDTO(updated);
     }

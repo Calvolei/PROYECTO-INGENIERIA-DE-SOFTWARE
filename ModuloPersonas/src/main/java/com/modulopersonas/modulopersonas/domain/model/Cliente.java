@@ -143,16 +143,16 @@ public class Cliente {
         return activo;
     }
 
-    public void setActivo(Boolean activo) {
-        this.activo = Objects.requireNonNullElse(activo, true);
-    }
-
     public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
+    public void setActivo(Boolean activo) {
+        this.activo = activo != null ? activo : true;
+    }
+
     public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = Objects.requireNonNullElseGet(fechaCreacion, LocalDateTime::now);
+        this.fechaCreacion = fechaCreacion != null ? fechaCreacion : LocalDateTime.now();
     }
 
     public LocalDateTime getFechaActualizacion() {

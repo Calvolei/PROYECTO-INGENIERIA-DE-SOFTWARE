@@ -1,7 +1,8 @@
-package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence;
+package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.adapter;
 
 import com.modulopersonas.modulopersonas.domain.model.Operario;
 import com.modulopersonas.modulopersonas.domain.repository.OperarioRepositoryPort;
+import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.repository.JpaOperarioRepository;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity.OperarioEntity;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.mapper.OperarioEntityMapper;
 import lombok.RequiredArgsConstructor;
@@ -70,5 +71,10 @@ public class OperarioRepositoryAdapter implements OperarioRepositoryPort {
     @Override
     public boolean existsByNumeroCelular(String numeroCelular) {
         return jpaRepository.existsByNumeroCelular(numeroCelular);
+    }
+
+    @Override
+    public boolean existsById(Long Id) {
+        return false;
     }
 }
