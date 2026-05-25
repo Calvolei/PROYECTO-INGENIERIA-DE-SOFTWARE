@@ -1,6 +1,5 @@
-package com.modulopersonas.modulopersonas.infraestructure.adapter.outbound.entity;
+package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity;
 
-import main.java.com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +10,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "operarios")
-public class OperarioEntity {
+@Table(name = "transportistas")
+public class TransportistaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,14 +36,10 @@ public class OperarioEntity {
     private LocalDateTime fechaRegistro;
 
 
-    // ========== CAMPOS ESPECÍFICOS PARA OPERARIO ==========
 
-    @Column(name = "codigo_interno", nullable = false, unique = true, length = 20)
-    private String codigoInterno;
+    @Column(name = "tipo_vehiculo", nullable = false, length = 30)
+    private String tipoVehiculo;
 
-
-    @Column(name = "zona_asignada", length = 50)
-    private String zonaAsignada;
 
     // ========== MÉTODOS DE CICLO DE VIDA ==========
 
