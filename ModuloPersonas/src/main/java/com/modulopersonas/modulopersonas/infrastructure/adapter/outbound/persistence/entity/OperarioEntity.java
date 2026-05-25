@@ -1,6 +1,5 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity;
 
-import main.java.com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,5 @@
 package com.modulopersonas.modulopersonas.domain.model;
 
-import main.java.com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

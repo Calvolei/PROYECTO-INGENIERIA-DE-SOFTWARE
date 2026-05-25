@@ -1,8 +1,9 @@
-package main.java.com.modulopersonas.modulopersonas.domain.model;
+package com.modulopersonas.modulopersonas.domain.model;
 
-import main.java.com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
+import com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Cliente {
@@ -143,11 +144,7 @@ public class Cliente {
     }
 
     public void setActivo(Boolean activo) {
-        if (activo == null) {
-            this.activo = true;
-        } else {
-            this.activo = activo;
-        }
+        this.activo = Objects.requireNonNullElse(activo, true);
     }
 
     public LocalDateTime getFechaCreacion() {
@@ -155,27 +152,20 @@ public class Cliente {
     }
 
     public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        if (fechaCreacion == null) {
-            this.fechaCreacion = LocalDateTime.now();
-        } else {
-            this.fechaCreacion = fechaCreacion;
-        }
+        this.fechaCreacion = Objects.requireNonNullElseGet(fechaCreacion, LocalDateTime::now);
     }
 
     public LocalDateTime getFechaActualizacion() {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
-    }
 
-    // Método para actualizar automáticamente la fecha de modificación
+    // Metodo para actualizar automáticamente la fecha de modificación
     public void actualizar() {
         this.fechaActualizacion = LocalDateTime.now();
     }
 
-    // Método para obtener nombre completo
+    // Metodo para obtener nombre completo
     public String getNombreCompleto() {
         return this.nombre + " " + this.apellido;
     }
