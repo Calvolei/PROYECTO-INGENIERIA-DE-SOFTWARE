@@ -102,6 +102,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Maven: pom.xml -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>3.0.3</version>
+        </dependency>
         <!-- Lombok + MapStruct binding (¡MUY IMPORTANTE!) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
