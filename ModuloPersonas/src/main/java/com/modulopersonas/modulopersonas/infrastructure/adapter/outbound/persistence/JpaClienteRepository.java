@@ -1,4 +1,4 @@
-package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.mapper;
+package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence;
 
 
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity.ClienteEntity;

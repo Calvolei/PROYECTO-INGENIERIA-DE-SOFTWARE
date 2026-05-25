@@ -1,27 +1,22 @@
-package com.modulopersonas.modulopersonas.domain.model;
+package com.modulopersonas.modulopersonas.infrastructure.adapter.inbound.rest.dto.response;
 
-import com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transportista {
+public class TransportistaResponseDTO {
     private Long id;
     private String nombre;
     private String apellido;
+    private String nombreCompleto;
     private String numeroCelular;
     private String identificacionNacional;
-    private Boolean activo = true;
+    private Boolean activo;
     private LocalDateTime fechaRegistro;
-
-    // Campos específicos para Transportista
-
-    // Método útil
-    public String getNombreCompleto() {
-        return nombre + " " + apellido;
-    }
 }
