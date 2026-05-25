@@ -1,4 +1,4 @@
-package com.modulopersonas.modulopersonas.infraestructure.adapter.outbound.entity;
+package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity;
 
 import main.java.com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
 import jakarta.persistence.*;
@@ -11,9 +11,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "clientes")
-
-public class Cliente {
+@Table(name = "operarios")
+public class OperarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +27,7 @@ public class Cliente {
     @Column(name = "numero_celular", nullable = false, unique = true, length = 10)
     private String numeroCelular;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "metodo_pago", nullable = false, length = 20)
-    private MetodoPago metodoPago;
-
-    @Column(name = "direccion", nullable = false, length = 200)
-    private String direccion;
-
-    @Column(name = "id_nacional", nullable = false, unique = true, length = 12)
+    @Column(name = "identificacion_nacional", nullable = false, unique = true, length = 12)
     private String identificacionNacional;
 
     @Column(name = "activo", nullable = false)
@@ -44,13 +36,14 @@ public class Cliente {
     @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
 
-    @Column(name = "fecha_actualizacion")
-    private LocalDateTime fechaActualizacion;
 
-    @Column(name = "puntos_fidelidad")
-    private Integer puntosFidelidad = 0;
+    // ========== CAMPOS ESPECÍFICOS PARA OPERARIO ==========
 
-    // ========== MÉTODOS DE CICLO DE VIDA (Lombok NO los genera) ==========
+    @Column(name = "codigo_interno", nullable = false, unique = true, length = 20)
+    private String codigoInterno;
+
+
+    // ========== MÉTODOS DE CICLO DE VIDA ==========
 
     @PrePersist
     protected void onCreate() {
@@ -60,16 +53,9 @@ public class Cliente {
         if (activo == null) {
             activo = true;
         }
-        if (puntosFidelidad == null) {
-            puntosFidelidad = 0;
-        }
     }
 
-    @PreUpdate
-    protected void onUpdate() {
-        fechaActualizacion = LocalDateTime.now();
-    }
-
+    // ========== MÉTODOS ÚTILES ==========
 
     public String getNombreCompleto() {
         return nombre + " " + apellido;
