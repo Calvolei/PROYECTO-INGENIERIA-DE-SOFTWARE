@@ -36,11 +36,6 @@ public class TransportistaEntity {
     private LocalDateTime fechaRegistro;
 
 
-
-    @Column(name = "tipo_vehiculo", nullable = false, length = 30)
-    private String tipoVehiculo;
-
-
     // ========== MÉTODOS DE CICLO DE VIDA ==========
 
     @PrePersist
