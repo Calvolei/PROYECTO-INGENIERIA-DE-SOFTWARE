@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.adapter;
 
+import com.modulopersonas.modulopersonas.domain.enums.EstadoTransportista;
 import com.modulopersonas.modulopersonas.domain.model.Transportista;
 import com.modulopersonas.modulopersonas.domain.repository.TransportistaRepositoryPort;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.repository.JpaTransportistaRepository;
@@ -65,5 +66,11 @@ public class TransportistaRepositoryAdapter implements TransportistaRepositoryPo
     @Override
     public boolean existsByNumeroCelular(String numeroCelular) {
         return jpaRepository.existsByNumeroCelular(numeroCelular);
+    }
+
+    @Override
+    public Optional<Transportista> findFirstByEstado(EstadoTransportista estado) {
+        return jpaRepository.findFirstByEstado(estado)
+                .map(entityMapper::toDomain);
     }
 }

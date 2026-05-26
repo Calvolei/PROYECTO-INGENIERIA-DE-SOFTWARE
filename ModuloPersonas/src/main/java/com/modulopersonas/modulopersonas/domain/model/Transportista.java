@@ -1,6 +1,6 @@
 package com.modulopersonas.modulopersonas.domain.model;
 
-import com.modulopersonas.modulopersonas.domain.enums.MetodoPago;
+import com.modulopersonas.modulopersonas.domain.enums.EstadoTransportista;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +18,10 @@ public class Transportista {
     private Boolean activo = true;
     private LocalDateTime fechaRegistro;
 
-    // Campos específicos para Transportista
+    // ========== NUEVO CAMPO ==========
+    private EstadoTransportista estado = EstadoTransportista.DISPONIBLE;
 
-    // Método útil
+
     public String getNombreCompleto() {
         return nombre + " " + apellido;
     }

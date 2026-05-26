@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.inbound.rest.dto.response;
 
+import com.modulopersonas.modulopersonas.domain.enums.EstadoTransportista;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,4 +20,5 @@ public class TransportistaResponseDTO {
     private String identificacionNacional;
     private Boolean activo;
     private LocalDateTime fechaRegistro;
+    private EstadoTransportista estado;
 }

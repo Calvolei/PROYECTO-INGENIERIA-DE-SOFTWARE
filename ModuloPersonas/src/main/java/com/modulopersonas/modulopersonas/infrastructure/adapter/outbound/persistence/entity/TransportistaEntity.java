@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity;
 
+import com.modulopersonas.modulopersonas.domain.enums.EstadoTransportista;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +36,10 @@ public class TransportistaEntity {
     @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
 
+    // ========== NUEVO CAMPO PARA DISPONIBILIDAD OPERATIVA ==========
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    private EstadoTransportista estado = EstadoTransportista.DISPONIBLE;
 
     // ========== MÉTODOS DE CICLO DE VIDA ==========
 
@@ -45,6 +50,9 @@ public class TransportistaEntity {
         }
         if (activo == null) {
             activo = true;
+        }
+        if (estado == null) {
+            estado = EstadoTransportista.DISPONIBLE;
         }
     }
 
