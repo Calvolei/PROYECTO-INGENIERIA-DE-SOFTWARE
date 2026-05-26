@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.application.service;
 
+import com.modulopersonas.modulopersonas.domain.enums.EstadoTransportista;
 import com.modulopersonas.modulopersonas.domain.model.Transportista;
 import com.modulopersonas.modulopersonas.domain.repository.TransportistaRepositoryPort;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.inbound.rest.dto.request.TransportistaRequestDTO;
@@ -78,6 +79,22 @@ public class TransportistaUseCase {
                 .orElseThrow(() -> new RuntimeException("Transportista no encontrado"));
 
         domain.setActivo(!domain.getActivo());
+        Transportista updated = repositoryPort.save(domain);
+        return domainMapper.toResponseDTO(updated);
+    }
+
+    @Transactional(readOnly = true)
+    public TransportistaResponseDTO findFirstByEstado(EstadoTransportista estado) {
+        Transportista domain = repositoryPort.findFirstByEstado(estado)
+                .orElseThrow(() -> new RuntimeException("No hay transportistas disponibles con estado: " + estado));
+        return domainMapper.toResponseDTO(domain);
+    }
+
+    @Transactional
+    public TransportistaResponseDTO updateEstado(Long id, EstadoTransportista nuevoEstado) {
+        Transportista domain = repositoryPort.findById(id)
+                .orElseThrow(() -> new RuntimeException("Transportista no encontrado con ID: " + id));
+        domain.setEstado(nuevoEstado);
         Transportista updated = repositoryPort.save(domain);
         return domainMapper.toResponseDTO(updated);
     }

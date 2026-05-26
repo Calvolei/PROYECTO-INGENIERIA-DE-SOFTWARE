@@ -1,6 +1,8 @@
 package com.modulopersonas.modulopersonas.domain.repository;
 
+
 import com.modulopersonas.modulopersonas.domain.model.Transportista;
+import com.modulopersonas.modulopersonas.domain.enums.EstadoTransportista;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,4 +25,7 @@ public interface TransportistaRepositoryPort {
     boolean existsByIdentificacionNacional(String identificacionNacional);
 
     boolean existsByNumeroCelular(String numeroCelular);
+
+    // ========== NUEVO MÉTODO PARA MÓDULO 2 ==========
+    Optional<Transportista> findFirstByEstado(EstadoTransportista estado);
 }
