@@ -14,13 +14,14 @@ public interface ClienteEntityMapper {
 
     // Entity → Domain
     @Mapping(target = "fechaCreacion", source = "fechaRegistro")
-    @Mapping(target = "fechaActualizacion", ignore = true)
-    @Mapping(target = "nombreCompleto", ignore = true)
+    @Mapping(target = "nombre", source = "nombre")
+    @Mapping(source = "email", target = "email")  // ← AGREGAR
     Cliente toDomain(ClienteEntity entity);
 
     // Domain → Entity
     @Mapping(target = "fechaRegistro", source = "fechaCreacion")
-    @Mapping(target = "nombreCompleto", ignore = true)
+    @Mapping(target = "nombre", source = "nombre")
+    @Mapping(source = "email", target = "email")  // ← AGREGAR
     ClienteEntity toEntity(Cliente domain);
 
     // Lista Entity → Lista Domain

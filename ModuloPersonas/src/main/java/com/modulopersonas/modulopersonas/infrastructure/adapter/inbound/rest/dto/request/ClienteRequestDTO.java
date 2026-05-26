@@ -16,4 +16,5 @@ public class ClienteRequestDTO {
     private String metodoPago;
     private String direccion;
     private String identificacionNacional;
+    private String email;
 }

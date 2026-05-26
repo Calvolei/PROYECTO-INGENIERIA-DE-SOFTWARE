@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.inbound.rest.dto.response;
 
+import com.modulopersonas.modulopersonas.domain.enums.RolOperario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +18,8 @@ public class OperarioResponseDTO {
     private String nombreCompleto;
     private String numeroCelular;
     private String identificacionNacional;
+    private String codigoInterno;
     private Boolean activo;
     private LocalDateTime fechaRegistro;
-    private String codigoInterno;
+    private RolOperario rol;  // ← NUEVO CAMPO
 }

@@ -19,6 +19,7 @@ public class Cliente {
     private Boolean activo;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
+    private String email;
 
     // Patrones para validaciones
     private static final Pattern PATRON_CELULAR = Pattern.compile("^3\\d{9}$");
@@ -182,5 +183,13 @@ public class Cliente {
                 ", identificacionNacional='" + identificacionNacional + '\'' +
                 ", activo=" + activo +
                 '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

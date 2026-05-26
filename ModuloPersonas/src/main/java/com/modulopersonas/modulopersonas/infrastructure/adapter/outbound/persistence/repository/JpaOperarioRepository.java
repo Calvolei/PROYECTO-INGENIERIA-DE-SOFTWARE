@@ -1,9 +1,12 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.repository;
 
 
+import com.modulopersonas.modulopersonas.domain.enums.RolOperario;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity.OperarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -26,4 +29,6 @@ public interface JpaOperarioRepository extends JpaRepository<OperarioEntity, Lon
 
     // Verificar si existe por número de celular
     boolean existsByNumeroCelular(String numeroCelular);
+
+    List<OperarioEntity> findByRol(RolOperario rol);
 }

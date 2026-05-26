@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.entity;
 
+import com.modulopersonas.modulopersonas.domain.enums.RolOperario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,12 +36,13 @@ public class OperarioEntity {
     @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
 
-
-    // ========== CAMPOS ESPECÍFICOS PARA OPERARIO ==========
-
     @Column(name = "codigo_interno", nullable = false, unique = true, length = 20)
     private String codigoInterno;
 
+    // ========== NUEVO CAMPO ROL ==========
+    @Column(name = "rol", nullable = false, length = 30)
+    @Enumerated(EnumType.STRING)
+    private RolOperario rol;
 
     // ========== MÉTODOS DE CICLO DE VIDA ==========
 

@@ -1,6 +1,7 @@
 package com.modulopersonas.modulopersonas.application.service;
 
 import com.modulopersonas.modulopersonas.application.port.OperarioUseCasePort;  // ← Importar interfaz
+import com.modulopersonas.modulopersonas.domain.enums.RolOperario;
 import com.modulopersonas.modulopersonas.domain.model.Operario;
 import com.modulopersonas.modulopersonas.domain.repository.OperarioRepositoryPort;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.inbound.rest.dto.request.OperarioRequestDTO;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -121,5 +123,14 @@ public class OperarioUseCase implements OperarioUseCasePort {  // ← Implementa
         domain.setActivo(!domain.getActivo());
         Operario updated = repositoryPort.save(domain);
         return domainMapper.toResponseDTO(updated);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OperarioResponseDTO> findByRol(RolOperario rolOperario) {
+        List<Operario> operarios = repositoryPort.findByRol(rolOperario);
+        return operarios.stream()
+                .map(domainMapper::toResponseDTO)
+                .collect(Collectors.toList());
     }
 }

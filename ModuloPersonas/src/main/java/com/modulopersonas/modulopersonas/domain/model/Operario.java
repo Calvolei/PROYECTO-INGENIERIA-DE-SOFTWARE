@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.domain.model;
 
+import com.modulopersonas.modulopersonas.domain.enums.RolOperario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class Operario {
     private String identificacionNacional;
     private Boolean activo = true;
     private LocalDateTime fechaRegistro;
+    private RolOperario rol;
 
     // Campos específicos para Operario (todos son iguales)
     private String codigoInterno;              // Código interno del operario (ej: OP-001)
