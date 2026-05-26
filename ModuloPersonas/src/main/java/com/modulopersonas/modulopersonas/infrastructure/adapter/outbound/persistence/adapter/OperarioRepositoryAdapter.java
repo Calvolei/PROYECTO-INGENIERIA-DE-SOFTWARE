@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.adapter;
 
+import com.modulopersonas.modulopersonas.domain.enums.RolOperario;
 import com.modulopersonas.modulopersonas.domain.model.Operario;
 import com.modulopersonas.modulopersonas.domain.repository.OperarioRepositoryPort;
 import com.modulopersonas.modulopersonas.infrastructure.adapter.outbound.persistence.repository.JpaOperarioRepository;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -76,5 +78,12 @@ public class OperarioRepositoryAdapter implements OperarioRepositoryPort {
     @Override
     public boolean existsById(Long Id) {
         return false;
+    }
+
+    @Override
+    public List<Operario> findByRol(RolOperario rol) {
+        return jpaRepository.findByRol(rol).stream()
+                .map(entityMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }

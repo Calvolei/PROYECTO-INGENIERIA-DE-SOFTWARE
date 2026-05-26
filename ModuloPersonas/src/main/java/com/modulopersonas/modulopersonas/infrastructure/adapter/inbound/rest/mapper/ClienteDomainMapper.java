@@ -18,12 +18,14 @@ public interface ClienteDomainMapper {
     @Mapping(target = "fechaCreacion", expression = "java(java.time.LocalDateTime.now())")
     @Mapping(target = "fechaActualizacion", ignore = true)
     @Mapping(source = "metodoPago", target = "metodoPago", qualifiedByName = "stringToMetodoPago")
+    @Mapping(source = "email", target = "email")
     Cliente toDomain(ClienteRequestDTO requestDTO);
 
     // Domain → ResponseDTO
     @Mapping(source = "nombreCompleto", target = "nombreCompleto")
     @Mapping(source = "fechaCreacion", target = "fechaRegistro")
     @Mapping(source = "metodoPago", target = "metodoPago", qualifiedByName = "metodoPagoToString")
+    @Mapping(source = "email", target = "email")
     ClienteResponseDTO toResponseDTO(Cliente domain);
 
     // Update Domain from Request
@@ -32,6 +34,7 @@ public interface ClienteDomainMapper {
     @Mapping(target = "fechaCreacion", ignore = true)
     @Mapping(target = "fechaActualizacion", ignore = true)
     @Mapping(source = "metodoPago", target = "metodoPago", qualifiedByName = "stringToMetodoPago")
+    @Mapping(source = "email", target = "email")
     void updateDomainFromRequest(ClienteRequestDTO requestDTO, @MappingTarget Cliente domain);
 
     // Conversiones manuales

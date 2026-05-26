@@ -1,5 +1,6 @@
 package com.modulopersonas.modulopersonas.domain.repository;
 
+import com.modulopersonas.modulopersonas.domain.enums.RolOperario;
 import com.modulopersonas.modulopersonas.domain.model.Operario;
 import java.util.List;
 import java.util.Optional;
@@ -27,4 +28,7 @@ public interface OperarioRepositoryPort {
     boolean existsByNumeroCelular(String numeroCelular);
 
     boolean existsById(Long Id);
+
+    List<Operario> findByRol(RolOperario rol);
+
 }

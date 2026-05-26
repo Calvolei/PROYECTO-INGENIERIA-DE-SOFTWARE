@@ -21,4 +21,5 @@ public class ClienteResponseDTO {
     private String identificacionNacional;
     private Boolean activo;
     private LocalDateTime fechaRegistro;
+    private String email;
 }

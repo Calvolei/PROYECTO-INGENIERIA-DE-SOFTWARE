@@ -10,9 +10,8 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@jakarta.persistence.Entity
+@Entity
 @Table(name = "clientes")
-
 public class ClienteEntity {
 
     @Id
@@ -30,10 +29,10 @@ public class ClienteEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "metodo_pago", nullable = false, length = 20)
-    private MetodoPago metodoPago;
+    private MetodoPago metodoPago;  // ← Está bien escrito en inglés
 
     @Column(name = "direccion", nullable = false, length = 200)
-    private String direccion;
+    private String direccion;  // ← Está bien escrito en español
 
     @Column(name = "id_nacional", nullable = false, unique = true, length = 12)
     private String identificacionNacional;
@@ -44,9 +43,8 @@ public class ClienteEntity {
     @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
 
-
-
-    // ========== MÉTODOS DE CICLO DE VIDA (Lombok NO los genera) ==========
+    @Column(name = "email", length = 100)
+    private String email;
 
     @PrePersist
     protected void onCreate() {
@@ -56,9 +54,5 @@ public class ClienteEntity {
         if (activo == null) {
             activo = true;
         }
-    }
-
-    public String getNombreCompleto() {
-        return nombre + " " + apellido;
     }
 }
